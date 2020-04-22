@@ -1,10 +1,9 @@
 <template>
   <div class="ZHLB">
     <div
-      style="display:flex;height:82px;padding:0 23px;backgroundColor:#2C6DCF"
-      @dblclick="func(data)"
+      style="display:flex;height:60px;padding:0 23px;backgroundColor:#2C6DCF"
     >
-      <div style="padding:15px 23px 15px 0">
+      <div style="padding:5px 23px 15px 0">
         <svg class="icons" aria-hidden="true">
           <use xlink:href="#icon-Group32Copy2" />
         </svg>
@@ -15,241 +14,11 @@
           <i class="assIcon iconfont icon-location"></i>
         </div>
         <div class="ass">{{dataObj.afdz}}</div>
-        <div class="nr" style="fontSize:16px">
-          <div style="fontSize:14px">
+        <div class="nr">
+          <div style="fontSize:12px">
             <span style="paddingRight:10px">高层建筑火灾</span>
             <span>{{dataObj.bjsj}}</span>
           </div>
-          <i v-if="flag" class="showIcon iconfont icon-sanx-up" @click="handlerC"></i>
-          <i v-if="!flag" class="showIcon iconfont icon-arrUp-fill" @click="handlerC"></i>
-        </div>
-      </div>
-    </div>
-    <div class="PZX" v-show="flag">
-      <!-- <div class="Singular">
-        <div class="title">重点单位</div>
-        <div class="value">
-          <el-select v-model="form.name" placeholder="请选择">
-            <el-option
-              v-for="item in ZDList"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </div>
-      </div>-->
-      <div class="Singular">
-        <div class="title">灾害类型</div>
-        <div class="value">
-          <el-select v-model="form.zhf" placeholder="请选择" @change="ZHFChange">
-            <el-option v-for="item in ZHFList" :key="item" :label="item" :value="item"></el-option>
-          </el-select>
-          <span class="HX">-</span>
-          <el-select v-model="form.zhd" placeholder="请选择" @change="ZHDChange">
-            <el-option v-for="item in ZHDList" :key="item" :label="item" :value="item"></el-option>
-          </el-select>
-          <span class="HX">-</span>
-          <el-select v-model="form.zht" placeholder="请选择">
-            <el-option v-for="item in ZHTList" :key="item" :label="item" :value="item"></el-option>
-          </el-select>
-        </div>
-      </div>
-      <div class="Singular">
-        <div class="title">灾害对象</div>
-        <div class="value">
-          <el-input v-model="form.ZHDX" placeholder></el-input>
-        </div>
-      </div>
-      <div class="Singular">
-        <div class="title">灾害地址</div>
-        <div class="value">
-          <el-input v-model="form.ZHDZ" placeholder></el-input>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="Singular">
-          <div class="title">所属区县</div>
-          <div class="value">
-            <el-select v-model="form.QX" placeholder="请选择">
-              <el-option
-                v-for="item in QXList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">辖区消防站</div>
-          <div class="value">
-            <el-select v-model="form.XQ" placeholder="请选择">
-              <el-option
-                v-for="item in XQList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-      </div>
-      <div class="Singular">
-        <div class="title">灾情描述</div>
-        <div class="value">
-          <el-input type="textarea" v-model="form.ajms" placeholder="请输入灾情描述"></el-input>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="Singular">
-          <div class="title">燃烧对象</div>
-          <div class="value">
-            <el-select v-model="form.RS" placeholder="请选择">
-              <el-option
-                v-for="item in RSList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">建筑结构</div>
-          <div class="value">
-            <el-select v-model="form.JZ" placeholder="请选择">
-              <el-option
-                v-for="item in JZList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="Singular">
-          <div class="title">火灾场所</div>
-          <div class="value">
-            <el-select v-model="form.HZF" placeholder="请选择">
-              <el-option
-                v-for="item in HZFList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-            <span class="HX">-</span>
-            <el-select v-model="form.HZD" placeholder="请选择">
-              <el-option
-                v-for="item in HZDList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">烟雾状况</div>
-          <div class="value">
-            <el-select v-model="form.YM" placeholder="请选择">
-              <el-option
-                v-for="item in YWList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="Singular">
-          <div class="title">楼层层数</div>
-          <div class="value">
-            <el-input v-model="form.lccs" placeholder></el-input>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">燃烧层数</div>
-          <div class="value">
-            <el-input v-model="form.rslc" placeholder></el-input>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">其他特征</div>
-          <div class="value">
-            <el-select v-model="form.qt" placeholder="请选择">
-              <el-option
-                v-for="item in QTList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-      </div>
-      <div class="duo">
-        <div class="Singular">
-          <div class="title">人员被困</div>
-          <div class="value">
-            <el-input v-model="form.name" placeholder></el-input>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="title">灾害等级</div>
-          <div class="value">
-            <div class="DJ" :class="{'one':one}" @click="active('one')">1</div>
-            <div class="DJ" :class="{'two':two}" @click="active('two')">2</div>
-            <div class="DJ" :class="{'three':three}" @click="active('three')">3</div>
-            <div class="DJ" :class="{'four':four}" @click="active('four')">4</div>
-            <div class="DJ" :class="{'five':five}" @click="active('five')">5</div>
-          </div>
-        </div>
-      </div>
-      <div class="Singular">
-        <div class="title">灾害特征</div>
-        <div class="value">
-          <!-- <template  -->
-          <div
-            v-for="(item,index) in TZList"
-            class="DJ ZH"
-            :class="{ZHActive:arr.includes(index)}"
-            :key="item+index"
-            @click="checkedBox(item,index)"
-          >{{item}}</div>
-          <!-- <el-checkbox-group v-model="check" size="small">
-            <el-checkbox-button v-for="city in TZList" :label="city" :key="city">{{city}}</el-checkbox-button>
-          </el-checkbox-group>-->
-          <!-- </<template> -->
-          <!-- <div class="DJ">困</div>
-            <div class="DJ">火</div>
-            <div class="DJ">烟</div>
-          <div class="DJ">危</div>-->
-        </div>
-      </div>
-      <div class="duo" style="marginTop:6px">
-        <div class="Singular">
-          <div class="title">灾情状态</div>
-          <div class="value">
-            <el-select v-model="form.zqzt" placeholder="请选择" @change="ZHFChange">
-              <el-option v-for="item in ZTList" :key="item" :label="item" :value="item"></el-option>
-            </el-select>
-          </div>
-        </div>
-        <div class="Singular">
-          <div class="value">
-            <el-button size="mini" style="background: linear-gradient(#2575ec, #2250ba);">补发报警短信</el-button>
-          </div>
-        </div>
-      </div>
-      <div class="Singular" style="marginTop:23px">
-        <div class="value">
-          <el-button>修改</el-button>
         </div>
       </div>
     </div>
@@ -280,57 +49,7 @@ export default {
   data() {
     return {
       form: {},
-      flag: true,
-      btnList: [
-        {
-          name: "警情位置",
-          icon: "icon-location"
-        },
-        {
-          name: "增援调派",
-          icon: "icon-tiaopai"
-        },
-        {
-          name: "启动预案",
-          icon: "icon-qidongyuan"
-        },
-        {
-          name: "二次定位",
-          icon: "icon-datouzhen"
-        }
-      ],
-      dataObj: this.data,
-      ZDList: [], //重点单位
-      ZHFList: ["火灾", "灾害事故", "公共突发事件", "遇险紧急求助"], //灾害类型第一列
-      ZHDList: [""], //灾害类型第二列
-      ZHTList: [], //灾害类型第三列
-      QXList: [], //所属区县
-      XQList: [], //辖区消防站
-      RSList: [], //燃烧对象
-      JZList: [], //建筑结构
-      HZFList: [], //火灾场所第一列
-      HZDList: [], //火灾场所第二列
-      YWList: [], //烟雾状况
-      QTList: [], //其他特征
-      ZTList: [
-        "报警",
-        "出警",
-        "到达",
-        "展开",
-        "出水",
-        "控制",
-        "熄灭",
-        "结束",
-        "返回"
-      ], //灾情状态
-      TZList: ["爆", "困", "火", "烟", "危"],
-      checkList: [],
-      arr: [],
-      one: false,
-      two: false,
-      three: false,
-      four: false,
-      five: false
+      dataObj: this.data
     };
   },
   created() {},
@@ -414,28 +133,23 @@ export default {
 
 <style lang="scss" scope>
 .ZHLB {
-  width: 100%;
+  width: 500px;
   color: #ffffff;
   // padding: 0 23px;
   // display: flex;
   .topIcon {
     margin-right: 10px;
   }
-  .FireType {
-    width: 52px;
-    height: 52px;
-    font-size: 52px;
-  }
   .bh {
     border-bottom: 2px #69dce0 solid;
   }
   .nr {
     display: flex;
-    font-size: 18px;
+    font-size: 16px;
     justify-content: space-between;
     .assIcon {
-      font-size: 18px;
-      line-height: 29px;
+      font-size: 16px;
+      line-height: 24px
       // color: #ffffff;
     }
     .showIcon {
@@ -444,7 +158,7 @@ export default {
     }
   }
   .ass {
-    font-size: 14px;
+    font-size: 12px;
   }
   .btn {
     height: 46px;

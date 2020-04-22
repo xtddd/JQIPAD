@@ -2,93 +2,9 @@
   <div class="page policeToday">
     <h2 class="header">今日警情</h2>
     <div class="main">
-      <div class="left flex" :style="leftBGC">
-        <!-- <div class="top">
-          <mark>|</mark>
-          检索
-        </div>-->
-        <!-- <el-form ref="form" :model="form" label-width="100px" size="mini">
-          <el-form-item label="关 键 字">
-            <el-input v-model="form.name" placeholder="请输入灾情名称或地点"></el-input>
-          </el-form-item>
-          <el-form-item label="所属辖区">
-            <el-select v-model="form.name" placeholder="请选择">
-              <el-option
-                v-for="item in xqList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="灾害类型">
-            <el-select v-model="form.name" placeholder="请选择">
-              <el-option
-                v-for="item in xqList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="灾害等级">
-            <el-select v-model="form.name" placeholder="请选择">
-              <el-option
-                v-for="item in xqList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="立案时间">
-            <el-col :span="11">
-              <el-time-select
-                placeholder="起始时间"
-                v-model="form.startTime"
-                :picker-options="{
-                  start: '00:00',
-                  step: '00:15',
-                  end: '23:59'
-                }"
-                style="width: 100%;"
-              ></el-time-select>
-            </el-col>
-            <el-col class="line" :span="2">-</el-col>
-            <el-col :span="11">
-              <el-time-select
-                placeholder="结束时间"
-                v-model="form.endTime"
-                :picker-options="{
-                  start: '00:00',
-                  step: '00:15',
-                  end: '23:59',
-                  minTime: form.startTime
-                }"
-                style="width: 100%;"
-              ></el-time-select>
-            </el-col>
-          </el-form-item>
-          <el-form-item>
-            <el-button>重置</el-button>
-            <el-button>查询</el-button>
-          </el-form-item>
-        </el-form>-->
-        <div class="bottom">
-          <!-- <div class="btop">
-            <mark>|</mark>
-            灾害研判
-          </div>-->
-          <div class="jqlb">
-            <!-- <template v-for="(item,index) in list">
-              <ZHLB :data="item" :key="index+'zh'" :func="handlerDouble"></ZHLB>
-            </template>-->
-            <ZHLB :func="handlerDouble"></ZHLB>
-          </div>
-        </div>
-      </div>
       <div class="right flex" :style="rightBGC">
         <div class="SJZ">
+          <ZHLB></ZHLB>
           <SJC></SJC>
         </div>
         <div class="nb">
@@ -107,6 +23,7 @@
           </div>
           <div class="contents">
             <dispatch-power v-if="item === '力量派遣'" :list="PX"></dispatch-power>
+            <police-details v-if="item === '详情总览'"></police-details>
           </div>
         </div>
       </div>
@@ -120,16 +37,18 @@
  *        ----张磊 2020.04.14
  */
 import dispatchPower from "./componts/dispatchPower";
-import ZHLB from "./componts/ZHLB";
+import policeDetails from "./componts/policeDetails";
 import SJC from "./componts/SJC";
+import ZHLB from "./componts/ZHLB";
 import "../../scss/iconfont";
 import * as api from "../../api/api";
 export default {
   name: "policeToday",
   components: {
     dispatchPower,
-    ZHLB,
-    SJC
+    SJC,
+    policeDetails,
+    ZHLB
   },
   data() {
     return {
@@ -142,8 +61,7 @@ export default {
         "处置措施",
         "组织指挥",
         "联战联勤",
-        "信息报送",
-        "预知预警"
+        "信息报送"
       ],
       flag: 1,
       active: 1,
@@ -173,7 +91,7 @@ export default {
   methods: {
     //初始化
     init() {
-      this.getList();
+      // this.getList();
       console.log("policeToday.init...");
     },
     //获取列表数据
@@ -226,11 +144,12 @@ export default {
     line-height: 54px;
     color: #6cb1ff;
     text-align: left;
-    font-size: 30px;
+    font-size: 20px;
     margin: 0;
     // padding: 28px 0 30px;
     border-bottom: 1px #4cbaff solid;
     box-sizing: border-box;
+    padding-left: 10px;
   }
   .main {
     width: 100%;
@@ -239,6 +158,20 @@ export default {
     text-align: left;
     padding-top: 10px;
     box-sizing: border-box;
+    .btop {
+      // width: 100%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      padding: 0 0 0 10px;
+      padding: 6px 20px;
+      border-bottom: 1px #2b8fff solid;
+      mark {
+        background-color: #00ffff;
+        color: #00ffff;
+        border-radius: 3px;
+      }
+    }
     .flex {
       display: flex;
       flex-flow: column nowrap;
@@ -328,6 +261,7 @@ export default {
       flex: 1;
       // border: 2px #072e4b solid;
       padding: 5px;
+      margin: 0 10px;
       box-sizing: border-box;
       flex-wrap: wrap;
       ::-webkit-scrollbar {
@@ -345,10 +279,11 @@ export default {
       }
       .SJZ {
         width: 100%;
-        height: 80px;
+        height: 60px;
         background-color: #072e4b;
-        padding: 0 50px;
+        padding-right: 50px;
         box-sizing: border-box;
+        display: flex;
       }
       .nb {
         display: flex;
@@ -357,8 +292,8 @@ export default {
         overflow: hidden;
       }
       .nav {
-        width: 46px;
-        padding-bottom: 50px;
+        width: 40px;
+        // padding-bottom: 50px;
         height: 100%;
         // background-color: #ccc;
         box-sizing: border-box;
@@ -374,10 +309,10 @@ export default {
           align-items: center;
           text-align: center;
           counter-reset: #ffffff;
-          font-size: 18px;
+          font-size: 16px;
           padding: 2px 0;
           border-bottom: 1px #ffffff solid;
-          line-height: 21px;
+          line-height: 1.3;
           span {
             display: inline-block;
             width: 24px;

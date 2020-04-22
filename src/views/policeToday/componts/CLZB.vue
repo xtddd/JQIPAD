@@ -60,6 +60,8 @@ export default {
 <style lang="scss">
 .CLZB {
   width: 100%;
+  font-size: 15px;
+  padding: 0 80px;
   .CLXX {
     display: flex;
     flex-wrap: wrap;

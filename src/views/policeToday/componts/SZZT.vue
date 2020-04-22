@@ -6,36 +6,60 @@
     </div>
     <div style="display:flex">
       <div class="SL" style="padding: 10px 30px 10px 50px;">
-        <div id="SLChart" :style="{width: '146px', height: '146px'}"></div>
+        <div id="PMChart" :style="{width: '146px', height: '146px'}">
+          <el-progress type="circle" :percentage="70" width="146"></el-progress>
+          <div class="JDTNR">
+            <div class="NR">
+              <span class="fontSizeTiele">可用载水量</span>
+              <span class="bigFontSize">5000KG</span>
+              <span class="fontSize">2000KG</span>
+            </div>
+          </div>
+        </div>
         <div class="xx">
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
         </div>
       </div>
       <div class="SL" style="padding: 10px 50px 10px 30px;">
-        <div id="PMChart" :style="{width: '146px', height: '146px'}"></div>
+        <div id="PMChart" :style="{width: '146px', height: '146px'}">
+          <el-progress type="circle" :percentage="70" width="146"></el-progress>
+          <div class="JDTNR">
+            <div class="NR">
+              <span class="fontSizeTiele">可用载水量</span>
+              <span class="bigFontSize">5000KG</span>
+              <span class="fontSize">2000KG</span>
+            </div>
+          </div>
+        </div>
         <div class="xx">
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
-          <span>
+          <span class="fontSizeTiele">
             消防泵实施压力：
-            <br />0.8mpa
+            <br />
+            <span class="fontSize">0.8mpa</span>
           </span>
         </div>
       </div>
@@ -66,8 +90,8 @@ export default {
   created() {},
   mounted() {
     this.$nextTick(() => {
-      this.drawLine("SLChart");
-      this.drawLine("PMChart");
+      // this.drawLine("SLChart");
+      // this.drawLine("PMChart");
     });
   },
   methods: {
@@ -203,15 +227,47 @@ export default {
 <style lang="scss">
 .SZZT {
   width: 100%;
+  .JDTNR {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -151px;
+    display: flex;
+    // flex-wrap: wrap;
+    align-items: center;
+    span {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .fontSizeTiele {
+    font-size: 13px;
+  }
+  .fontSize {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .bigFontSize {
+    font-size: 19px;
+    font-weight: 700;
+    padding: 8px 0 1px 0;
+  }
   .SL {
     display: flex;
     // justify-content: space-between;
     flex: 1;
+    align-items: center;
+    justify-content: center;
+    .el-progress__text {
+      color: transparent;
+    }
     .xx {
       // display: flex;
       // justify-content: space-between;
       flex-wrap: wrap;
       padding: 0 15px;
+      text-align: center;
       span {
         width: 100%;
         display: block;

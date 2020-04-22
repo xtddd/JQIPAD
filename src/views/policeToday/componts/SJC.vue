@@ -106,8 +106,8 @@ export default {
 .SLC {
   width: 100%;
   display: flex;
-  padding: 10px 0;
-  font-size: 18px;
+  padding: 4px 0;
+  font-size: 14px;
   line-height: 20px;
   .block {
     width: 100p;
@@ -122,8 +122,8 @@ export default {
   }
   .dian {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: #ffffff;
   }
@@ -131,7 +131,7 @@ export default {
   .xian {
     display: inline-block;
     flex: 1;
-    height: 2px;
+    height: 1px;
     background-color: #ffffff;
     position: relative;
     top: 4px;
@@ -139,19 +139,20 @@ export default {
   .must {
     width: 100px;
     position: relative;
-    top: 29px;
+    top: 27px;
   }
   .fontTop {
     height: 23px;
     position: relative;
-    left: -16px;
-    letter-spacing: 5px;
+    top:2px;
+    left: -11px;
+    letter-spacing: 2px;
   }
   .fontBottom {
     height: 25px;
-    padding-top: 5px;
+    padding-top: 1px;
     position: relative;
-    left: -17px;
+    left: -15px;
   }
 }
 </style>

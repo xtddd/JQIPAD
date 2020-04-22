@@ -6,8 +6,8 @@
     </div>
     <template v-for="(item,index) in list">
       <div class="nr" :key="item.dpid+index">
-        <div class="top" style="display:flex;padding:15px 26px;background:#1A4E91">
-          <div style="flex:1;text-align:center;font-size:18px">
+        <div class="top" style="display:flex;padding:17px 26px;background:#1A4E91">
+          <div style="flex:1;text-align:center;font-size:14px">
             {{item.fsjgmc}}
             <i v-if="show" class="shoIcon iconfont icon-sanx-up" @click="handlerC"></i>
             <i v-if="!show" class="shoIcon iconfont icon-arrUp-fill" @click="handlerC"></i>
@@ -138,8 +138,8 @@ export default {
   }
   .PQitem {
     background-color: #2250ba;
-    padding: 13px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 13px;
     display: flex;
     justify-content: space-between;
     align-items: center;

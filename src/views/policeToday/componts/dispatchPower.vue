@@ -3,28 +3,15 @@
     <!-- <h2 style="font-size:36px;padding:0 0 0 32px;">3中队12车72人</h2> -->
     <div class="centent">
       <div class="leftcentent">
-        <div class="leftMian">
-          <h2 style="padding:0 0 0 20px;color:#E1181A;margin:10px 0;fontSiae:24px">推荐派遣</h2>
-          <div class="LIlist" style="border:2px #2B8FFF solid;borderBottom:none">
-            <v-centent title="基层消防救援站" isCheck></v-centent>
-          </div>
-          <div class="button" style="border:2px #2B8FFF solid;borderTop:none">
-            <el-button>忽略建议</el-button>
-            <el-button>确认增援</el-button>
-          </div>
-        </div>
-        <div class="leftMian">
-          <h2 style="padding:0 0 0 20px;margin:10px 0;fontSiae:24px">3中队12车72人</h2>
-          <div class="LIlist" style="border:2px #2B8FFF solid">
+        <div class="topTitle">已调派：3中队12车72人</div>
+        <div class="leftMian" style="border:2px #2B8FFF solid">
+          <div class="LIlist">
             <v-centent title="基层消防救援站"></v-centent>
           </div>
         </div>
       </div>
       <div class="rightcentent" style="background:rgba(7,46,75,0.6)">
-        <div class="button">
-          <el-button size="mini" @click="centerDialogVisible = true">一键调派</el-button>
-          <el-button size="mini">增援力量</el-button>
-        </div>
+        <div class="button"></div>
         <div class="LIlist" style="border:2px #2B8FFF solid">
           <DNCY title="队内成员"></DNCY>
           <SZZT title="上装状态"></SZZT>
@@ -86,10 +73,10 @@ export default {
   .btop {
     height: 30px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 16px;
     // border-bottom: 1px #2b8fff solid;
     padding: 0 0 0 10px;
-    padding: 18px 20px;
+    padding: 6px 20px;
     mark {
       background-color: #00ffff;
       color: #00ffff;
@@ -101,17 +88,27 @@ export default {
     flex-grow: 1;
     overflow: hidden;
     .leftcentent {
-      width: 40%;
-      display: flex;
-      flex-wrap: wrap;
+      width: 33%;
+      // display: flex;
+      // flex-wrap: wrap;
       margin-right: 10px;
       overflow: auto;
+      // margin-top: 50px;
+      background: rgba(7, 46, 75, 0.6);
+      // padding-bottom: 20px;
+      .topTitle {
+        padding-left: 20px;
+        font-size: 22px;
+        height: 50px;
+        line-height: 50px;
+      }
       .leftMian {
         display: flex;
         flex-flow: column;
-        height: 50%;
+        // height: 50%;
         width: 100%;
-        overflow: auto;
+        // overflow: auto;
+        height: calc(100% - 50px);
         box-sizing: border-box;
         h2 {
           margin: 14px 0 5px 0;
@@ -135,7 +132,7 @@ export default {
         }
       }
       .button {
-        padding: 10px 10px;
+        padding: 20px 10px;
         // height: 50px;
         button {
           width: 50%;
@@ -179,7 +176,13 @@ export default {
           // border-radius: 0;
           border: 1px #2b8fff solid;
           color: #ffffff;
-          background: linear-gradient(#2575ec, #2250ba);
+          background: linear-gradient(
+            0deg,
+            rgba(34, 80, 186, 1),
+            rgba(37, 117, 236, 1)
+          );
+          box-shadow: 0px 2px 8px 0px #0b1f4c,
+            0px 2px 4px 0px rgba(133, 219, 255, 1) inset;
           // :nth-child(1) {
           //   background-color: #0c3b5c;
           // }

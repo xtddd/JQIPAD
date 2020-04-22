@@ -34,6 +34,7 @@ export default {
   flex-wrap: wrap;
   overflow:hidden;
   position:relative;
+  letter-spacing: 2px;
 }
 .page {
   width: 100%;
