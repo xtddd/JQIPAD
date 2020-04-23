@@ -61,12 +61,11 @@ export default {
 .CLZB {
   width: 100%;
   font-size: 15px;
-  padding: 0 80px;
   .CLXX {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 15px;
+    padding: 15px 80px;
     span {
       display: inline-block;
       min-width: 100px;
